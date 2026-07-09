@@ -46,7 +46,7 @@ function App() {
 
   useEffect(() => {
     // Initial fetch
-    fetch('http://localhost:3001/api/calls')
+    fetch('/api/calls')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setCalls(data);
@@ -54,7 +54,7 @@ function App() {
       .catch(err => console.error('Failed to fetch initial calls', err));
 
     // SSE setup
-    const eventSource = new EventSource('http://localhost:3001/api/stream');
+    const eventSource = new EventSource('/api/stream');
     
     eventSource.onopen = () => setIsConnected(true);
     
